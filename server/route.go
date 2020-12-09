@@ -26,7 +26,6 @@ func SetupRoutes(e *gin.Engine, throttler *throttler.Throttler, logger *logrus.L
 	group.GET("/:namespace/:queue/job/:job_id", handlers.PeekJob)
 	group.DELETE("/:namespace/:queue/job/:job_id", handlers.CollectMetrics("delete"), handlers.Delete)
 	group.DELETE("/:namespace/:queue", handlers.DestroyQueue)
-
 	// Consume API is special, it accepts the url like `/api/namespace/q1,q2,q3`,
 	// while all other APIs forbid.
 	group2 := e.Group("/api")
@@ -50,6 +49,9 @@ func SetupRoutes(e *gin.Engine, throttler *throttler.Throttler, logger *logrus.L
 	pubGroup.GET("/:namespace/:queue/size", handlers.Size)
 	pubGroup.GET("/:namespace/:queue/deadletter/size", handlers.GetDeadLetterSize)
 
+	// healthz check
+	healthGroup := e.Group("/")
+	healthGroup.GET("/whoami", handlers.Healthz)
 	e.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "api not found"})
 	})

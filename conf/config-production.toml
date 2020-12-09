@@ -1,0 +1,40 @@
+Host = "0.0.0.0"
+Port = 8080
+AdminHost = "0.0.0.0" # optional, default to localhost
+AdminPort = 10000
+LogDir = ""
+LogLevel = "info"
+#LogFormat = "text" # Use LogFormat="json" if wants to print the log with json format
+EnableAccessLog = false
+
+# default params
+#TTLSecond = 24 * 60 * 60 // 1 day
+#DelaySecond = 0
+#TriesNum = 1
+#TTRSecond = 2 * 60 // 2 minutes
+#TimeoutSecond = 0  // means non-blocking
+
+[AdminRedis]  # redis used to store admin data, eg. tokens
+Addr = "prod-redis-sentinel-01.automizely.org:26379,prod-redis-sentinel-02.automizely.org:26379,prod-redis-sentinel-03.automizely.org:26379"
+MasterName = "lmstfy.automizelyapi.org-01"
+DB = 0
+
+
+[Pool]
+[Pool.cluster-0]
+Addr = "prod-redis-sentinel-01.automizely.org:26379,prod-redis-sentinel-02.automizely.org:26379,prod-redis-sentinel-03.automizely.org:26379"
+MasterName = "lmstfy.automizelyapi.org-01"
+DB = 0
+
+
+[Pool.cluster-1]
+Addr = "prod-redis-sentinel-01.automizely.org:26379,prod-redis-sentinel-02.automizely.org:26379,prod-redis-sentinel-03.automizely.org:26379"
+MasterName = "lmstfy.automizelyapi.org-02"
+DB = 0
+
+
+[Pool.cluster-2]
+Addr = "prod-redis-sentinel-01.automizely.org:26379,prod-redis-sentinel-02.automizely.org:26379,prod-redis-sentinel-03.automizely.org:26379"
+MasterName = "lmstfy.automizelyapi.org-03"
+DB = 0
+

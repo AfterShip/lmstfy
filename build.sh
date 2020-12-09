@@ -67,8 +67,8 @@ if [[ $? -ne 0 ]]; then
 fi
 echo "Build $TARGET_NAME, OS is $TARGET_OS, Arch is $TARGET_ARCH"
 
-rm -rf ${BUILD_DIR}
-mkdir -p ${BUILD_DIR}
-mv lmstfy-server ${BUILD_DIR}
+#rm -rf ${BUILD_DIR}
+#mkdir -p ${BUILD_DIR}
+#mv lmstfy-server ${BUILD_DIR}
 
-echo "Building $TARGET_NAME succeeded, artifact is in ${BUILD_DIR}"
+echo "Building $TARGET_NAME succeeded, artifact is in ${TARGET_NAME}"

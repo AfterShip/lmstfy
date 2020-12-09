@@ -1,0 +1,42 @@
+Host = "0.0.0.0"
+Port = 8080
+AdminHost = "0.0.0.0" # optional, default to localhost
+AdminPort = 10000
+LogDir = ""
+LogLevel = "debug"
+#LogFormat = "text" # Use LogFormat="json" if wants to print the log with json format
+EnableAccessLog = true
+
+# default params
+#TTLSecond = 24 * 60 * 60 // 1 day
+#DelaySecond = 0
+#TriesNum = 1
+#TTRSecond = 2 * 60 // 2 minutes
+#TimeoutSecond = 0  // means non-blocking
+
+[AdminRedis]  # redis used to store admin data, eg. tokens
+Addr = "test-redis-lmstfy-persist-01.automizely.me:26379,test-redis-lmstfy-persist-01.automizely.me:26380,test-redis-lmstfy-persist-01.automizely.me:26381"
+#MasterName = "lmstfy"
+MasterName = "mymaster"
+DB = 1
+
+
+[Pool]
+[Pool.default]
+Addr = "test-redis-lmstfy-persist-01.automizely.me:26379,test-redis-lmstfy-persist-01.automizely.me:26380,test-redis-lmstfy-persist-01.automizely.me:26381"
+#MasterName = "lmstfy"
+MasterName = "mymaster"
+DB = 1
+#Addr = "localhost:6379"
+# Password = foobared
+# DB = 0
+#MigrateTo = "migrate" # When migration is enabled, all PUBLISH will go to `migrate` pool. and `default` will be drained
+#[Pool.migrate]
+#Addr = "localhost:6389"
+
+[Pool.maotai]
+Addr = "test-redis-lmstfy-persist-01.automizely.me:26379,test-redis-lmstfy-persist-01.automizely.me:26380,test-redis-lmstfy-persist-01.automizely.me:26381"
+#MasterName = "lmstfy"
+MasterName = "mymaster"
+DB = 1
+

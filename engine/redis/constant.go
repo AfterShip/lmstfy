@@ -7,4 +7,4 @@ const (
 	MetaPrefix       = "m"
 )
 
-const BATCH_SIZE = 100
+const BATCH_SIZE = 200

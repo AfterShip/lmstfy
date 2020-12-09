@@ -3,6 +3,7 @@ package config
 import "testing"
 
 func TestConfig_Validate(t *testing.T) {
+
 	conf := &RedisConf{}
 	if err := conf.validate(); err == nil {
 		t.Fatal("validate addr error was expected, but got nil")
